@@ -9,11 +9,14 @@ router.get('/', (req, res, next) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('.resultTable').each((i, el) => {
-        resultTable.push($(el).find('.resulttop').text())
-        resultTable.push($(el).find('.resultbottom') .text())
+        let resultTop = $(el).find('.resulttop').text()
+        resultTop = resultTop.match(/.{1,4}/g)
+        resultTable.push(resultTop)
+        // let resultBottom = $(el).find('.resultbottom').text()
+        // resultTable.push(resultBottom.match(/.{1,4}/g))
+        // resultTable.push($(el).find('.resultbottom') .text())
       })
     }
-    
     res.status(200).json({
       message: resultTable
     });
