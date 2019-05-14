@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
+  let resultDate1 =[]
   let resultTable = []
   let resultTable2 = []
   let resultTable3 = []
@@ -11,6 +12,10 @@ router.get('/', (req, res, next) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('#magnum4d').each((i, el) => {
+        let resultDate = $(el).find('.resultdrawdate').text()
+        resultDate = resultDate.slice(6,16)
+        resultDate1.push(resultDate)
+
         let resultTop = $(el).find('.resulttop').text()
         resultTop = resultTop.match(/.{1,4}/g)
         resultTop = resultTop.map((r, index) => {
@@ -38,6 +43,7 @@ router.get('/', (req, res, next) => {
       })
     }
     res.status(200).json({
+      date: resultDate1,
       magnum: resultTable,
       special: resultTable2,
       consolation: resultTable3
