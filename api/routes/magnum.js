@@ -24,6 +24,10 @@ router.get('/', (req, res, next) => {
         resultTable = resultTop
         // let resultBottom = $(el).find('.resultbottom').text()
         // resultTable.push(resultBottom.match(/.{1,4}/g))
+        // resultTable.push(resultTop)
+       
+        // let resultBottom = $(el).find('.resultbottom').text()
+        // resultTable.push(resultBottom.match(/.{1,4}/g))
         // resultTable.push($(el).find('.resultbottom') .text())
       })
     }
