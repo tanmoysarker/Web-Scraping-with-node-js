@@ -35,14 +35,14 @@ router.get('/', (req, res, next) => {
         })
         resultTable = resultTop
         let resultBottomFirst= $(el).find('.resultbottom').text()
-        let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
-        let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)
-        let resultBottom3 = resultBottomFirst.match(/.{1,4}/g).slice(10,13)
+        let resultBottom1 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(0,5)
+        let resultBottom2 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(5,10)
+        let resultBottom3 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(10,13)
         resultTable2.push(resultBottom1,resultBottom2,resultBottom3) 
        
         let resultBottomSecond = $(el).find('.resultbottom').text()
-        let resultBottom4 = resultBottomSecond.match(/.{1,4}/g).slice(13,18)
-        let resultBottom5 = resultBottomSecond.match(/.{1,4}/g).slice(18,23)
+        let resultBottom4 = resultBottomSecond.match(/\d{4}|[^\d]/g).slice(13,18)
+        let resultBottom5 = resultBottomSecond.match(/\d{4}|[^\d]/g).slice(18,23)
         resultTable3.push(resultBottom4,resultBottom5)
         
       })
