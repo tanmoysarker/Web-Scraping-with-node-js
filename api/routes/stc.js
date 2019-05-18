@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   let resultDate1 =[]
+  let resultDate2 =[]
   let multiple = []
   let resultTable = []
   let resultTable2 = []
@@ -14,6 +15,8 @@ router.get('/', (req, res, next) => {
       const $ = cheerio.load(html);
       $('#stc4d').each((i, el) => {
         let resultDate = $(el).find('.resultdrawdate').text()
+        let resultDraw = resultDate.substr(resultDate.indexOf(")") + 1)
+        resultDate2.push(resultDraw)
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
 
@@ -46,6 +49,7 @@ router.get('/', (req, res, next) => {
     }
     res.status(200).json({
       date: resultDate1,
+      draw: resultDate2,
       multiple: multiple,
       magnum: resultTable,
       special: resultTable2,
