@@ -12,13 +12,13 @@ router.get('/', (req, res, next) => {
   request('https://www.check4d.com/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
-      $('#magnum4d').each((i, el) => {
+      $('#damacai2').each((i, el) => {
         let resultDate = $(el).find('.resultdrawdate').text()
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
 
         let resultTop = $(el).find('.resulttop').text()
-        resultTop = resultTop.match(/.{1,4}/g)
+        resultTop = resultTop.match(/.{1,7}/g)
         multiple.push(resultTop)
         resultTop = resultTop.map((r, index) => {
           if (index === 0) {
@@ -32,15 +32,18 @@ router.get('/', (req, res, next) => {
         })
         resultTable = resultTop
         let resultBottomFirst= $(el).find('.resultbottom').text()
-        let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
-        let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)
-        let resultBottom3 = resultBottomFirst.match(/.{1,4}/g).slice(10,13)
-        resultTable2.push(resultBottom1,resultBottom2,resultBottom3) 
+        let resultBottom1 = resultBottomFirst.match(/.{1,7}/g).slice(0,3)
+        let resultBottom2 = resultBottomFirst.match(/.{1,7}/g).slice(3,6)
+        let resultBottom3 = resultBottomFirst.match(/.{1,7}/g).slice(6,9)
+        let resultBottom6 = resultBottomFirst.match(/.{1,7}/g).slice(9,10)
+        resultTable2.push(resultBottom1,resultBottom2,resultBottom3,resultBottom6) 
        
         let resultBottomSecond = $(el).find('.resultbottom').text()
-        let resultBottom4 = resultBottomSecond.match(/.{1,4}/g).slice(13,18)
-        let resultBottom5 = resultBottomSecond.match(/.{1,4}/g).slice(18,23)
-        resultTable3.push(resultBottom4,resultBottom5) 
+        let resultBottom4 = resultBottomSecond.match(/.{1,7}/g).slice(10,13)
+        let resultBottom5 = resultBottomSecond.match(/.{1,7}/g).slice(13,16)
+        let resultBottom7 = resultBottomSecond.match(/.{1,7}/g).slice(16,19)
+        let resultBottom8 = resultBottomSecond.match(/.{1,7}/g).slice(19,20)
+        resultTable3.push(resultBottom4,resultBottom5,resultBottom7,resultBottom8) 
         
       })
     }

@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
   request('https://www.check4d.com/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
-      $('#magnum4d').each((i, el) => {
+      $('#damacai').each((i, el) => {
         let resultDate = $(el).find('.resultdrawdate').text()
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
@@ -32,14 +32,13 @@ router.get('/', (req, res, next) => {
         })
         resultTable = resultTop
         let resultBottomFirst= $(el).find('.resultbottom').text()
-        let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
-        let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)
-        let resultBottom3 = resultBottomFirst.match(/.{1,4}/g).slice(10,13)
-        resultTable2.push(resultBottom1,resultBottom2,resultBottom3) 
+        let resultBottom1 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(0,5)
+        let resultBottom2 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(5,10)
+        resultTable2.push(resultBottom1,resultBottom2) 
        
         let resultBottomSecond = $(el).find('.resultbottom').text()
-        let resultBottom4 = resultBottomSecond.match(/.{1,4}/g).slice(13,18)
-        let resultBottom5 = resultBottomSecond.match(/.{1,4}/g).slice(18,23)
+        let resultBottom4 = resultBottomSecond.match(/\d{4}|[^\d]/g).slice(11,16)
+        let resultBottom5 = resultBottomSecond.match(/\d{4}|[^\d]/g).slice(16,21)
         resultTable3.push(resultBottom4,resultBottom5) 
         
       })
