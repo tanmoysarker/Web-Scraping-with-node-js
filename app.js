@@ -11,6 +11,8 @@ const stc = require('./api/routes/stc');
 const cashSweep = require('./api/routes/cashSweep');
 const singapore4d = require('./api/routes/singapore4d');
 const sabah88 = require('./api/routes/sabah88');
+const nine93 = require('./api/routes/nine93');
+const nine97 = require('./api/routes/nine97');
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
@@ -22,5 +24,7 @@ app.use('/stc', stc);
 app.use('/cashSweep', cashSweep);
 app.use('/singapore4d', singapore4d);
 app.use('/sabah88', sabah88);
+app.use('/nine93', nine93);
+app.use('/nine97', nine97);
 
 module.exports = app;
