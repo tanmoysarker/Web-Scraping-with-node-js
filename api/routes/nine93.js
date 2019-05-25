@@ -10,6 +10,8 @@ router.get('/', (req, res, next) => {
   let result5 = ['Third']
   let firstPhase =[]
   let result1 =[]
+  let special = []
+  let consolidation = []
   
   request('http://draw.yes18.net/api/sh1001/?date=20190315&game=1', (error, response, html) => {
     if (!error && response.statusCode == 200) {
@@ -39,11 +41,21 @@ router.get('/', (req, res, next) => {
   let thirdName = result1[2][0]
   let third = result5.concat(thirdName)
   firstPhase.push(first,second,third)
+  
+  let secondPhase1 = [].concat.apply([], result1).slice(3,8)
+  let secondPhase2 = [].concat.apply([], result1).slice(8,13)
+  special.push(secondPhase1,secondPhase2)
+  
+  let thirdPhase1 = [].concat.apply([], result1).slice(13,18)
+  let thirdPhase2 = [].concat.apply([], result1).slice(18,23)
+  consolidation.push(thirdPhase1,thirdPhase2)
 
     res.status(200).json({
       All: result1,
       Date: result,
-      First: firstPhase
+      First: firstPhase,
+      Special: special,
+      Consolidation: consolidation
     });
   });
 
