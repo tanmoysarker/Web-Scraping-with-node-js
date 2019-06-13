@@ -13,6 +13,13 @@ const singapore4d = require('./api/routes/singapore4d');
 const sabah88 = require('./api/routes/sabah88');
 const nine93 = require('./api/routes/nine93');
 const nine97 = require('./api/routes/nine97');
+const magnum2 = require('./api/newRoutes/magnum2');
+const damacai3 = require('./api/newRoutes/damacai3');
+const sportstoto2 = require('./api/newRoutes/sportstoto2');
+const singapore4d2 = require('./api/newRoutes/singapore4d2');
+const sabah882 = require('./api/newRoutes/sabah882');
+const stc2 = require('./api/newRoutes/stc2');
+const cashSweep2 = require('./api/newRoutes/cashSweep2');
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
@@ -26,5 +33,12 @@ app.use('/singapore4d', singapore4d);
 app.use('/sabah88', sabah88);
 app.use('/nine93', nine93);
 app.use('/nine97', nine97);
+app.use('/magnum2', magnum2);
+app.use('/damacai3', damacai3);
+app.use('/sportstoto2', sportstoto2);
+app.use('/singapore4d2', singapore4d2);
+app.use('/sabah882', sabah882);
+app.use('/stc2', stc2);
+app.use('/cashSweep2', cashSweep2);
 
 module.exports = app;
