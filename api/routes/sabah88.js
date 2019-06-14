@@ -23,18 +23,9 @@ router.get('/', (req, res, next) => {
 
         let resultTop = $(el).find('.resulttop').text()
         resultTop = resultTop.match(/.{1,4}/g)
+        let dp = resultTop.splice(0,3)
         multiple.push(resultTop)
-        // resultTop = resultTop.map((r, index) => {
-        //   if (index === 0) {
-        //     return ['1ST Prize', r]
-        //   } else if (index === 1) {
-        //     return ['2ND Prize', r]
-        //   } else if (index === 2) {
-        //     return ['3RD Prize', r]
-        //   }
-        //   console.log(index+':', r)
-        // })
-        resultTable = resultTop
+        resultTable = dp
         newData.push(resultTable)
 
         let resultBottomFirst= $(el).find('.resultbottom').text()

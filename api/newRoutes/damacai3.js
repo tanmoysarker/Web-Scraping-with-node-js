@@ -18,7 +18,7 @@ router.get('/:id?', (req, res, next) => {
   let mdate = []
   let mdate1 = []
   let mdraw = []
-  let mdraw1 = []
+  let fr = []
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -46,6 +46,7 @@ router.get('/:id?', (req, res, next) => {
       let thirdP = ['3rd Prize', thirdPrize]
       resultTable = resultTable2[3]
       resultTable3.push(firstP, secondP, thirdP)
+      fr.push(resultTable3)
 
       mdate.push(date) 
       mdraw.push(draw)
@@ -67,7 +68,7 @@ router.get('/:id?', (req, res, next) => {
     res.status(200).json({
       date: mdate,
       draw: mdraw,
-      magnum: resultTable3,
+      magnum: fr,
       special: resultTable6,
       consolation: resultTable9
     });
