@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   let result =[]
-  let result3 = ['First']
-  let result4 = ['Second']
-  let result5 = ['Third']
+  let result3 = []
+  let result4 = []
+  let result5 = []
   let firstPhase =[]
   let result1 =[]
   let special = []
@@ -35,12 +35,10 @@ router.get('/', (req, res, next) => {
       
     }
   let firstName = result1[0][0]
-  let first = result3.concat(firstName)
   let secondName = result1[1][0]
-  let second = result4.concat(secondName)
   let thirdName = result1[2][0]
-  let third = result5.concat(thirdName)
-  firstPhase.push(first,second,third)
+  firstPhase.push(firstName,secondName,thirdName)
+  result3.push(firstPhase)
   
   let secondPhase1 = [].concat.apply([], result1).slice(3,8)
   let secondPhase2 = [].concat.apply([], result1).slice(8,13)
@@ -53,7 +51,7 @@ router.get('/', (req, res, next) => {
     res.status(200).json({
       All: result1,
       Date: result,
-      First: firstPhase,
+      First: result3,
       Special: special,
       Consolidation: consolidation
     });
