@@ -11,6 +11,7 @@ router.get('/', (req, res, next) => {
   let resultTable2 = []
   let resultTable3 = []
   let newData = []
+  let second = []
   request('https://www.check4d.com/sabah-sarawak-4d-results/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -25,6 +26,18 @@ router.get('/', (req, res, next) => {
         resultTop = resultTop.match(/.{1,4}/g)
         let dp = resultTop.splice(0,3)
         multiple.push(resultTop)
+        let page = dp
+        page = page.map((r, index) => {
+          if (index === 0) {
+            return ['1ST Prize', r]
+          } else if (index === 1) {
+            return ['2ND Prize', r]
+          } else if (index === 2) {
+            return ['3RD Prize', r]
+          }
+          console.log(index+':', r)
+        })
+        second = page
         resultTable = dp
         newData.push(resultTable)
 
@@ -46,6 +59,7 @@ router.get('/', (req, res, next) => {
       draw: resultDate2,
       multiple: multiple,
       magnum: newData,
+      magnum2: second,
       special: resultTable2,
       consolation: resultTable3
     });

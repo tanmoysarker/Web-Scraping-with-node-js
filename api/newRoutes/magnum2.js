@@ -10,6 +10,7 @@ router.get('/:id?', (req, res, next) => {
   let resultTable2 = []
   let resultTable3 = []
   let fr = []
+  let sc = []
   let resultTable4 = []
   let resultTable5 = []
   let resultTable6 = []
@@ -38,11 +39,15 @@ router.get('/:id?', (req, res, next) => {
       let date = first.slice(18, 28)
       let draw = first.slice(34, 49)
       let firstPrize = first.slice(61, 65)
+      let firstP = ['1st Prize',firstPrize ]
       let secondPrize = first.slice(77, 81)
+      let secondP = ['2nd Prize',secondPrize ]
       let thirdPrize = first.slice(93, 97)
+      let thirdP = ['3rd Prize',thirdPrize ]
       resultTable = resultTable2[0]
       resultTable3.push(firstPrize, secondPrize, thirdPrize)
       fr.push(resultTable3)
+      sc.push(firstP,secondP,thirdP)
 
       mdate.push(date) 
       mdraw.push(draw)
@@ -64,6 +69,7 @@ router.get('/:id?', (req, res, next) => {
       date: mdate,
       draw: mdraw,
       magnum: fr,
+      magnum2: sc,
       special: resultTable6,
       consolation: resultTable9
     });

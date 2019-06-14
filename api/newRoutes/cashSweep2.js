@@ -47,7 +47,8 @@ router.get('/:id?', (req, res, next) => {
       let thirdP = ['3rd Prize', thirdPrize]
       resultTable = resultTable2[9]
       resultTable3.push(firstP, secondP, thirdP)
-      fr.push(resultTable3)
+      fr.push(firstPrize,secondPrize,thirdPrize)
+      mdate1.push(fr)
 
       mdate.push(date) 
       mdraw.push(draw)
@@ -69,7 +70,8 @@ router.get('/:id?', (req, res, next) => {
     res.status(200).json({
       date: mdate,
       draw: mdraw,
-      magnum: fr,
+      magnum: mdate1,
+      magnum2: resultTable3,
       special: resultTable6,
       consolation: resultTable9
     });
