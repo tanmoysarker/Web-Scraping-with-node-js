@@ -72,7 +72,7 @@ router.get('/:id?', (req, res, next) => {
       date: mdate,
       draw: mdraw,
       magnum: mdate1,
-      magnum2: fr,
+      magnum2: resultTable3,
       special: resultTable6,
       consolation: resultTable9
     });
