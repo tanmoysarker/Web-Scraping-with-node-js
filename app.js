@@ -20,6 +20,7 @@ const singapore4d2 = require('./api/newRoutes/singapore4d2');
 const sabah882 = require('./api/newRoutes/sabah882');
 const stc2 = require('./api/newRoutes/stc2');
 const cashSweep2 = require('./api/newRoutes/cashSweep2');
+const nine932 = require('./api/newRoutes/nine932');
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
@@ -40,5 +41,6 @@ app.use('/singapore4d2', singapore4d2);
 app.use('/sabah882', sabah882);
 app.use('/stc2', stc2);
 app.use('/cashSweep2', cashSweep2);
+app.use('/nine932', nine932);
 
 module.exports = app;
