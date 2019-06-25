@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const router = express.Router();
 
 router.get('/:id?', (req, res, next) => {
-  let url = 'draw.yes18.net/api/sh1001/?date=' + req.params.id
+  let url = 'http://draw.yes18.net/api/sh1001/?date=' + req.params.id +'&game=2'
   let result =[]
   let result3 = []
   let result4 = []
