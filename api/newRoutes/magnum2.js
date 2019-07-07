@@ -65,6 +65,40 @@ router.get('/:id?', (req, res, next) => {
       let resultBottom5 = last.match(/.{1,4}/g).slice(18,23)
       resultTable9.push(resultBottom4, resultBottom5)
     }
+    if (mdate === undefined || mdate.length == 0) {
+      res.status(400).json({
+        error: "data not found",
+      });
+    } else if (mdraw === undefined || mdraw.length == 0) {
+      res.status(400).json({
+        error: "data not found",
+      });
+    } else if (fr === undefined || fr.length == 0) {
+      res.status(400).json({
+        error: "data not found",
+      });
+    } else if (sc === undefined || sc.length == 0) {
+      res.status(400).json({
+        error: "data not found",
+      });
+    } else if (resultTable6 === undefined || resultTable6.length == 0) {
+      res.status(400).json({
+        error: "data not found",
+      });
+    } else if (resultTable9 === undefined || resultTable9.length == 0) {
+      res.status(400).json({
+        error: "data not found",
+      });
+    } else {
+      res.status(200).json({
+        date: mdate,
+        draw: mdraw,
+        magnum: fr,
+        magnum2: sc,
+        special: resultTable6,
+        consolation: resultTable9
+      });
+    }
     res.status(200).json({
       date: mdate,
       draw: mdraw,
