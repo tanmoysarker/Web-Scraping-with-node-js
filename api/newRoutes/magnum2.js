@@ -91,6 +91,7 @@ router.get('/:id?', (req, res, next) => {
       });
     } else {
       res.status(200).json({
+        updated: "07-07-19",
         date: mdate,
         draw: mdraw,
         magnum: fr,
@@ -99,14 +100,6 @@ router.get('/:id?', (req, res, next) => {
         consolation: resultTable9
       });
     }
-    res.status(200).json({
-      date: mdate,
-      draw: mdraw,
-      magnum: fr,
-      magnum2: sc,
-      special: resultTable6,
-      consolation: resultTable9
-    });
   });
 
 });
