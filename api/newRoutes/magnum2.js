@@ -66,32 +66,31 @@ router.get('/:id?', (req, res, next) => {
       resultTable9.push(resultBottom4, resultBottom5)
     }
     if (mdate === undefined || mdate.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         error: "data not found",
       });
     } else if (mdraw === undefined || mdraw.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         error: "data not found",
       });
     } else if (fr === undefined || fr.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         error: "data not found",
       });
     } else if (sc === undefined || sc.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         error: "data not found",
       });
     } else if (resultTable6 === undefined || resultTable6.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         error: "data not found",
       });
     } else if (resultTable9 === undefined || resultTable9.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         error: "data not found",
       });
     } else {
       res.status(200).json({
-        updated: "07-07-19",
         date: mdate,
         draw: mdraw,
         magnum: fr,
