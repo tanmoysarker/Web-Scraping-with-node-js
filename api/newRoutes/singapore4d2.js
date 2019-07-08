@@ -35,7 +35,7 @@ router.get('/:id?', (req, res, next) => {
       })
 
       console.log(resultTable2[5])
-      let first = resultTable2[5].toString()
+      let first = resultTable2[5]+ ''
       console.log(first)
       let date = first.slice(18, 28)
       let draw = first.slice(34, 47)
@@ -54,13 +54,14 @@ router.get('/:id?', (req, res, next) => {
       mdraw.push(draw)
 
       resultTable5 = resultTable4[5]
-      let middle = resultTable4[5].toString()
+      let middle = resultTable4[5]+ ''
+      if(middle !== 'undefined'){
       let resultBottom1 = middle.match(/.{1,4}/g).slice(0,5)
       let resultBottom2 = middle.match(/.{1,4}/g).slice(5,10)
       resultTable6.push(resultBottom1, resultBottom2) 
-      
+      }
       resultTable8 = resultTable7[5]
-      let last = resultTable7[5].toString()
+      let last = resultTable7[5]+ ''
       console.log(last)
       let resultBottom4 = last.match(/.{1,4}/g).slice(10,15)
       let resultBottom5 = last.match(/.{1,4}/g).slice(15,20)
