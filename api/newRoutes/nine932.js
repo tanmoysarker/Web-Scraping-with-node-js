@@ -45,23 +45,48 @@ router.get('/:id?', (req, res, next) => {
       });
       
     }
-  let first = result3[0]
-  let a = result1.indexOf(first)
-  console.log(a)
+// <<<<<<< HEAD
+//   let first = result3[0]
+//   let a = result1.indexOf(first)
+//   console.log(a)
+// =======
+    let first = result3[0]
+    let second1 = result3[1]
+    let third = result3[2]
+
   let firstName = result3[0]
   let firstP = ['1st Prize',firstName]
   let secondName = result3[1]
   let secondP = ['2nd Prize',secondName]
   let thirdName = result3[2]
   let thirdP = ['3rd Prize',thirdName]
-  second.push(firstP,secondP,thirdP)
+// <<<<<<< HEAD
+//   second.push(firstP,secondP,thirdP)
   
-  let secondPhase1 = [].concat.apply([], result1).slice(0,5)
-  let secondPhase2 = [].concat.apply([], result1).slice(5,10)
+//   let secondPhase1 = [].concat.apply([], result1).slice(0,5)
+//   let secondPhase2 = [].concat.apply([], result1).slice(5,10)
+//   special.push(secondPhase1,secondPhase2)
+  
+//   let thirdPhase1 = [].concat.apply([], result1).slice(10,15)
+//   let thirdPhase2 = [].concat.apply([], result1).slice(15,20)
+// =======
+  second.push(firstP, secondP, thirdP)
+    
+    let b = [].concat.apply([], result1)
+    let c = b.indexOf(first)
+    b.splice(c, 1)
+    let d = b.indexOf(second1)
+    b.splice(d, 1)
+    let e = b.indexOf(third)
+    b.splice(e, 1)
+    console.log(b)
+
+  let secondPhase1 = b.slice(0,5)
+  let secondPhase2 = b.slice(5,10)
   special.push(secondPhase1,secondPhase2)
   
-  let thirdPhase1 = [].concat.apply([], result1).slice(10,15)
-  let thirdPhase2 = [].concat.apply([], result1).slice(15,20)
+  let thirdPhase1 = b.slice(10,15)
+  let thirdPhase2 = b.slice(15,20)
   consolidation.push(thirdPhase1,thirdPhase2)
 
     res.status(200).json({
