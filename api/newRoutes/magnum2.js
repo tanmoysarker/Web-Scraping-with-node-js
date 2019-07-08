@@ -35,7 +35,7 @@ router.get('/:id?', (req, res, next) => {
         let resultBottomSecond = $(el).find('.resultbottom').text()
         resultTable7.push(resultBottomSecond)
       })
-      
+
       let first = resultTable2[0] + ''
       let date = first.slice(18, 28)
       let draw = first.slice(34, 49)
@@ -55,42 +55,18 @@ router.get('/:id?', (req, res, next) => {
 
       resultTable5 = resultTable4[0]
       let middle = resultTable4[0] + ''
+      if(middle !== 'undefined'){
       let resultBottom1 = middle.match(/.{1,4}/g).slice(0,5)
       let resultBottom2 = middle.match(/.{1,4}/g).slice(5,10)
       let resultBottom3 = middle.match(/.{1,4}/g).slice(10,13)
       resultTable6.push(resultBottom1,resultBottom2,resultBottom3) 
-
+      }
       resultTable8 = resultTable7[0]
       let last = resultTable7[0] + ''
       let resultBottom4 = last.match(/.{1,4}/g).slice(13,18)
       let resultBottom5 = last.match(/.{1,4}/g).slice(18,23)
       resultTable9.push(resultBottom4, resultBottom5)
     }
-    if (mdate === undefined || mdate.length == 0) {
-      res.status(404).json({
-        error: "data not found",
-      });
-    } else if (mdraw === undefined || mdraw.length == 0) {
-      res.status(404).json({
-        error: "data not found",
-      });
-    } else if (fr === undefined || fr.length == 0) {
-      res.status(404).json({
-        error: "data not found",
-      });
-    } else if (sc === undefined || sc.length == 0) {
-      res.status(404).json({
-        error: "data not found",
-      });
-    } else if (resultTable6 === undefined || resultTable6.length == 0) {
-      res.status(404).json({
-        error: "data not found",
-      });
-    } else if (resultTable9 === undefined || resultTable9.length == 0) {
-      res.status(404).json({
-        error: "data not found",
-      });
-    } else {
       res.status(200).json({
         date: mdate,
         draw: mdraw,
@@ -99,7 +75,7 @@ router.get('/:id?', (req, res, next) => {
         special: resultTable6,
         consolation: resultTable9
       });
-    }
+    
   });
 
 });
