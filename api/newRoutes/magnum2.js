@@ -35,7 +35,7 @@ router.get('/:id?', (req, res, next) => {
         let resultBottomSecond = $(el).find('.resultbottom').text()
         resultTable7.push(resultBottomSecond)
       })
-      let first = resultTable2[0].toString()
+      let first = resultTable2[0] + ''
       let date = first.slice(18, 28)
       let draw = first.slice(34, 49)
       let firstPrize = first.slice(61, 65)
@@ -53,14 +53,14 @@ router.get('/:id?', (req, res, next) => {
       mdraw.push(draw)
 
       resultTable5 = resultTable4[0]
-      let middle = resultTable4[0].toString()
+      let middle = resultTable4[0] + ''
       let resultBottom1 = middle.match(/.{1,4}/g).slice(0,5)
       let resultBottom2 = middle.match(/.{1,4}/g).slice(5,10)
       let resultBottom3 = middle.match(/.{1,4}/g).slice(10,13)
       resultTable6.push(resultBottom1,resultBottom2,resultBottom3) 
 
       resultTable8 = resultTable7[0]
-      let last = resultTable7[0].toString()
+      let last = resultTable7[0] + ''
       let resultBottom4 = last.match(/.{1,4}/g).slice(13,18)
       let resultBottom5 = last.match(/.{1,4}/g).slice(18,23)
       resultTable9.push(resultBottom4, resultBottom5)
