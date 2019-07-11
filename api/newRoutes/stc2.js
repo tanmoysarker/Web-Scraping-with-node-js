@@ -46,10 +46,10 @@ router.get('/:id?', (req, res, next) => {
       let secondPrize = ''
       let thirdPrize = ''
       if (date === theirDate) {
-      let draw = first.slice(39, 54)
-      let firstPrize = first.slice(66, 70)
-      let secondPrize = first.slice(82, 86)
-      let thirdPrize = first.slice(98, 102)
+       draw = first.slice(39, 54)
+       firstPrize = first.slice(66, 70)
+       secondPrize = first.slice(82, 86)
+       thirdPrize = first.slice(98, 102)
       }
       let firstP = ['1st Prize', firstPrize]
       let secondP = ['2nd Prize', secondPrize]
