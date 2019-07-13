@@ -65,12 +65,18 @@ router.get('/:id?', (req, res, next) => {
     console.log(b)
 
   let secondPhase1 = b.slice(0,5)
+  let specialData1 = secondPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
   let secondPhase2 = b.slice(5,10)
-  special.push(secondPhase1,secondPhase2)
+  let specialData2 = secondPhase2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
+
+  special.push(specialData1,specialData2)
   
   let thirdPhase1 = b.slice(10,15)
+  let consolationData1 = thirdPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
   let thirdPhase2 = b.slice(15,20)
-  consolidation.push(thirdPhase1,thirdPhase2)
+  let consolationData2 = thirdPhase2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
+
+  consolidation.push(consolationData1,consolationData2)
 
     res.status(200).json({
       All: result1,

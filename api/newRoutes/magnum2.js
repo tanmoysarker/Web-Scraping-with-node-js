@@ -38,7 +38,6 @@ router.get('/:id?', (req, res, next) => {
         resultTable7.push(resultBottomSecond)
       })
       let first = resultTable2[0] + ''
-        console.log(first)
         let date = first.slice(18,28)
         let draw = ''
         let firstPrize = ''
@@ -68,6 +67,7 @@ router.get('/:id?', (req, res, next) => {
         let resultBottom1 = ''
         let resultBottom2 = ''
         let resultBottom3 = ''
+        
         if (middle !== '') {
           resultBottom1 = middle.match(/.{1,4}/g).slice(0,5)
           resultBottom2 = middle.match(/.{1,4}/g).slice(5,10)

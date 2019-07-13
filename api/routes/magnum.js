@@ -43,14 +43,19 @@ router.get('/', (req, res, next) => {
 
         let resultBottomFirst= $(el).find('.resultbottom').text()
         let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
+        let specialData1 = resultBottom1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)
+        let specialData2 = resultBottom2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom3 = resultBottomFirst.match(/.{1,4}/g).slice(10,13)
-        resultTable2.push(resultBottom1,resultBottom2,resultBottom3) 
+        let specialData3 = resultBottom3.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
+        resultTable2.push(specialData1,specialData2,specialData3) 
        
         let resultBottomSecond = $(el).find('.resultbottom').text()
         let resultBottom4 = resultBottomSecond.match(/.{1,4}/g).slice(13,18)
+        let consolationData1 = resultBottom4.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom5 = resultBottomSecond.match(/.{1,4}/g).slice(18,23)
-        resultTable3.push(resultBottom4,resultBottom5) 
+        let consolationData2 = resultBottom5.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
+        resultTable3.push(consolationData1,consolationData2) 
         
       })
     }
