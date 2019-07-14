@@ -24,8 +24,9 @@ router.get('/', (req, res, next) => {
 
         let resultTop = $(el).find('.resulttop').text()
         resultTop = resultTop.match(/.{1,4}/g)
-        let dp = resultTop.splice(0,3)
-        multiple.push(resultTop)
+        let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
+        let dp = initial.splice(0,3)
+        multiple.push(initial)
         let page = dp
         page = page.map((r, index) => {
           if (index === 0) {

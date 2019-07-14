@@ -27,7 +27,8 @@ router.get('/:id?', (req, res, next) => {
         let pos2 = strarray.search("#3#")
         let t = strarray.slice(pos2+3,pos2+7)
         result3.push(f,s,t)
-        firstPhase.push(result3)
+        let initial = result3.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
+        firstPhase.push(initial)
         let date = strarray.slice(64,72)
          let year = date.slice(0,4)
          let d = date.slice(4,6)
@@ -47,12 +48,12 @@ router.get('/:id?', (req, res, next) => {
     let first = result3[0]
     let second1 = result3[1]
     let third = result3[2]
-  let firstName = result3[0]
-  let firstP = ['1st Prize',firstName]
-  let secondName = result3[1]
-  let secondP = ['2nd Prize',secondName]
-  let thirdName = result3[2]
-  let thirdP = ['3rd Prize',thirdName]
+    let firstName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(first) ? '----' : first
+    let firstP = ['1st Prize',firstName]
+    let secondName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(second1) ? '----' : second1
+    let secondP = ['2nd Prize',secondName]
+    let thirdName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(third) ? '----' : third
+    let thirdP = ['3rd Prize',thirdName]
   second.push(firstP, secondP, thirdP)
     
     let b = [].concat.apply([], result1)

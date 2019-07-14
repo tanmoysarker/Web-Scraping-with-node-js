@@ -28,7 +28,8 @@ router.get('/:id?', (req, res, next) => {
         let pos2 = strarray.search("#3#")
         let t = strarray.slice(pos2+3,pos2+7)
         result3.push(f,s,t)
-        firstPhase.push(result3)
+        let initial = result3.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
+        firstPhase.push(initial)
         let date = strarray.slice(64,72)
          let year = date.slice(0,4)
          let d = date.slice(4,6)
@@ -54,11 +55,11 @@ router.get('/:id?', (req, res, next) => {
     let second1 = result3[1]
     let third = result3[2]
 
-  let firstName = result3[0]
+  let firstName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(first) ? '----' : first
   let firstP = ['1st Prize',firstName]
-  let secondName = result3[1]
+  let secondName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(second1) ? '----' : second1
   let secondP = ['2nd Prize',secondName]
-  let thirdName = result3[2]
+  let thirdName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(third) ? '----' : third
   let thirdP = ['3rd Prize',thirdName]
 // <<<<<<< HEAD
 //   second.push(firstP,secondP,thirdP)
@@ -79,7 +80,6 @@ router.get('/:id?', (req, res, next) => {
     b.splice(d, 1)
     let e = b.indexOf(third)
     b.splice(e, 1)
-    console.log(b)
 
   let secondPhase1 = b.slice(0,5)
   let specialData1 = secondPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
