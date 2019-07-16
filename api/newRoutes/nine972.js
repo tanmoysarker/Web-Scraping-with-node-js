@@ -69,8 +69,8 @@ router.get('/:id?', (req, res, next) => {
   let specialData1 = secondPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
   let secondPhase2 = b.slice(5,10)
   let specialData2 = secondPhase2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
-
-  special.push(specialData1,specialData2)
+  let specialData3 = ['','','']
+  special.push(specialData1,specialData2,specialData3)
   
   let thirdPhase1 = b.slice(10,15)
   let consolationData1 = thirdPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
