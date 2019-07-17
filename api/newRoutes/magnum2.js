@@ -63,11 +63,11 @@ router.get('/:id?', (req, res, next) => {
         mdraw.push(draw)
 
         resultTable5 = resultTable4[0]
-        let middle = resultTable4[0] + ''
+        let middle = resultTable4[0]+ ''
         let resultBottom1 = ''
         let resultBottom2 = ''
         let resultBottom3 = ''
-        
+        console.log('see:', resultTable4[0])
         if (middle !== '') {
           resultBottom1 = middle.match(/.{1,4}/g).slice(0,5)
           resultBottom2 = middle.match(/.{1,4}/g).slice(5,10)

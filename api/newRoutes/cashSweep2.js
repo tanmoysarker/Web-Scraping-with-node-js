@@ -64,6 +64,7 @@ router.get('/:id?', (req, res, next) => {
       let middle = resultTable4[9]+ ''
       let resultBottom1 = ''
       let resultBottom2 = ''
+      console.log('see:', resultTable4)
       if(middle !== ''){
         console.log(middle)
        resultBottom1 = middle.match(/\d{4}|[^\d]/g).slice(0,5)
