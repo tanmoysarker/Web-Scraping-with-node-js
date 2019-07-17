@@ -17,6 +17,8 @@ router.get('/', (req, res, next) => {
   let table2 = []
   let table3 = []
   let table4 = []
+  let table5 = []
+  let table6 = []
   request('https://www.check4d.com/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -56,11 +58,12 @@ router.get('/', (req, res, next) => {
         table1.push(resultTable3)
         resultTable4.push(finalFourth,finalFifth,finalSixth);
         table2.push(resultTable4)
-        newData.push(secondFirst,secondSecond,secondThird,secondFourth,secondFifth);
+        newData.push(secondSecond,secondThird,secondFourth,secondFifth);
         table3.push(newData)
         secondValue.push(secondOr1,secondOr2,secondOr3,secondOr4);
         table4.push(secondValue)
-    
+        table5.push(secondFirst)
+        table6.push(table5)
         
       })
     }
@@ -70,6 +73,7 @@ router.get('/', (req, res, next) => {
       // multiple: multiple,
       fiveD: table1,
       fiveD2: table2,
+      sixD1: table6,
       sixD: table3,
       sixD2: table4
     });
