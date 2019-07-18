@@ -26,6 +26,42 @@ router.get('/:id?', (req, res, next) => {
         let s = strarray.slice(pos1+3,pos1+7)
         let pos2 = strarray.search("#3#")
         let t = strarray.slice(pos2+3,pos2+7)
+
+        let sp1 = strarray.search("a0#0#")
+        let special1 = strarray.slice(sp1+5,sp1+9)
+        let sp2 = strarray.search("a1#0#")
+        let special2 = strarray.slice(sp2+5,sp2+9)
+        let sp3 = strarray.search("a2#0#")
+        let special3 = strarray.slice(sp3+5,sp3+9)
+        let sp4 = strarray.search("a3#0#")
+        let special4 = strarray.slice(sp4+5,sp4+9)
+        let sp5 = strarray.search("a4#0#")
+        let special5 = strarray.slice(sp5+5,sp5+9)
+        let sp6 = strarray.search("a5#0#")
+        let special6 = strarray.slice(sp6+5,sp6+9)
+        let sp7 = strarray.search("a6#0#")
+        let special7 = strarray.slice(sp7+5,sp7+9)
+        let sp8 = strarray.search("a7#0#")
+        let special8 = strarray.slice(sp8+5,sp8+9)
+        let sp12 = strarray.search("a8#0#")
+        let special12 = strarray.slice(sp12+5,sp12+9)
+        let sp9 = strarray.search("a9#0#")
+        let special9 = strarray.slice(sp9+5,sp9+9)
+        let sp10 = strarray.search("a10#0#")
+        let special10 = strarray.slice(sp10+6,sp10+10)
+        let sp11 = strarray.search("a11#0#")
+        let special11 = strarray.slice(sp11+6,sp11+10)
+        let sp13 = strarray.search("a12#0#")
+        let special13 = strarray.slice(sp13+6,sp13+10)
+
+        result4.push(special1,special2,special3,special4,special5,special6,special7,special8,special12,special9,special10,special11,special13)
+        let newResult4 = result4.map(str => /[a-z]/i.test(str) ? '----' : str)
+
+        let especial = newResult4.slice(0,5)
+        let especial1 = newResult4.slice(5,10)
+        let especial2 = newResult4.slice(10,13)
+        result5.push(especial,especial1,especial2)
+        console.log(result5)
         result3.push(f,s,t)
         let initial = result3.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         firstPhase.push(initial)
@@ -63,7 +99,6 @@ router.get('/:id?', (req, res, next) => {
     b.splice(d, 1)
     let e = b.indexOf(third)
     b.splice(e, 1)
-    console.log(b)
 
   let secondPhase1 = b.slice(0,5)
   let specialData1 = secondPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
@@ -84,7 +119,7 @@ router.get('/:id?', (req, res, next) => {
       Date: result,
       First: firstPhase,
       First2: second,
-      Special: special,
+      Special: result5,
       Consolidation: consolidation
     });
   });

@@ -23,6 +23,7 @@ const cashSweep2 = require('./api/newRoutes/cashSweep2');
 const nine932 = require('./api/newRoutes/nine932');
 const nine972 = require('./api/newRoutes/nine972');
 const sportstoto56 = require('./api/routes/sportstoto56') 
+const sportstoto562 = require('./api/newRoutes/sportstoto562') 
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
@@ -46,5 +47,6 @@ app.use('/cashSweep2', cashSweep2);
 app.use('/nine932', nine932);
 app.use('/nine972', nine972);
 app.use('/sportstoto56',sportstoto56);
+app.use('/sportstoto562',sportstoto562);
 
 module.exports = app;
