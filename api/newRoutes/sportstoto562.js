@@ -10,88 +10,91 @@ router.get('/:id?', (req, res, next) => {
   var momentObj = moment(ourDate, 'YYYY-MM-DD');
   var theirDate = momentObj.format('DD-MM-YYYY');
   let resultDate1 =[]
-  let resultDate2 =[]
-  let multiple = []
-  let resultTable = []
   let resultTable2 = []
-  let resultTable3 = []
-  let resultTable4 = []
-  let newData = []
-  let secondValue = []
   let table1 = []
   let table2 = []
   let table3 = []
   let table4 = []
   let table5 = []
   let table6 = []
+  let table7 = []
+  let table8 = []
+  let table9 = []
+  let table10 = []
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
-      $('#sportstoto2').each((i, el) => {
+      $('.resultTable').each((i, el) => {
         let resultDate = $(el).find('.resultTable2').text()
-        console.log('see',resultDate)
-        let date = resultDate.search("Date: ")
-        let finalDate = ''
-        let finalDraw = ''
+        resultTable2.push(resultDate)
+        
+      })
+      let first = resultTable2[7] + ''
+        let datefind = first.slice(35,45)
+        console.log(datefind)
+        let first1 = ''
+        let second1 = ''
+        let third1 = ''
+        let fourth1 = ''
+        let fifth1 = ''
+        let sixth1 = ''
+        let finalFifth = ''
         let finalFirst = ''
         let finalSecond = ''
         let finalThird = ''
         let finalFourth = ''
         let finalSixth = ''
-        let finalFifth = ''
-        if (date === theirDate) {
-        finalDate = resultDate.slice(date+6,date+16)
-        let draw = resultDate.search("Draw No: ")
-        finalDraw = resultDate.slice(draw+8,draw+16)
-        let first = resultDate.search("1st")
-        finalFirst = resultDate.slice(first+3,first+8)
-        let second = resultDate.search("2nd")
-        finalSecond = resultDate.slice(second+3,second+8)
-        let third = resultDate.search('3rd')
-        finalThird = resultDate.slice(third+3, third+8)
-        let fourth = resultDate.search('4th')
-        finalFourth = resultDate.slice(fourth+3, fourth+7)
-        let fifth = resultDate.search('5th')
-        finalFifth = resultDate.slice(fifth+3, fifth+6)
-        let sixth = resultDate.search('6th')
-        finalSixth = resultDate.slice(sixth+3,sixth+5)
+        let first2 = ''
+        let second2 = ''
+        let or2 = ''
+        let third2 = ''
+        let or3 = ''
+        let fourth2 = ''
+        let or4 = ''
+        let fifth2 = ''
+        let or5 = ''
+        if (datefind === theirDate) {
+          first1 = first.search("1st")
+          finalFirst = first.slice(first1+3,first1+8)
+          second1 = first.search("2nd")
+          finalSecond = first.slice(second1+3,second1+8)
+          third1 = first.search("3rd")
+          finalThird = first.slice(third1+3,third1+8)
+          fourth1 = first.search("4th")
+          finalFourth = first.slice(fourth1+3,fourth1+7)
+          fifth1 = first.search("5th")
+          finalFifth = first.slice(fifth1+3,fifth1+6)
+          sixth1 = first.search("6th")
+          finalSixth = first.slice(sixth1+3,sixth1+5)
+
+          first2 = first.slice(112,118)
+          second2 = first.slice(121,127)
+          or2 = first.slice(129,135)
+          third2 = first.slice(138,144)
+          or3 = first.slice(146,152)
+          fourth2 = first.slice(155,161)
+          or4 = first.slice(163,169)
+          fifth2 = first.slice(172,178)
+          or5 = first.slice(180,186)
         }
-        let secondFirst = resultDate.slice(112,118)
-        let secondSecond = resultDate.slice(121,127)
-        let secondOr1 = resultDate.slice(129,135)
-        let secondThird = resultDate.slice(138,144)
-        let secondOr2 = resultDate.slice(146,152)
-        let secondFourth = resultDate.slice(155,161)
-        let secondOr3 = resultDate.slice(163,169)
-        let secondFifth = resultDate.slice(172,178)
-        let secondOr4 = resultDate.slice(180,186)
+        table1.push(finalFirst,finalSecond,finalThird)
+        table6.push(table1)
+        table2.push(finalFourth,finalFifth,finalSixth)
+        table7.push(table2)
+        table3.push(first2)
+        table8.push(table3)
+        table4.push(second2,third2,fourth2,fifth2)
+        table9.push(table4)
+        table5.push(or2,or3,or4,or5)
+        table10.push(table5)
 
-        
-
-        resultDate1.push(finalDate);
-        resultDate2.push(finalDraw);
-        resultTable3.push(finalFirst,finalSecond,finalThird);
-        table1.push(resultTable3)
-        resultTable4.push(finalFourth,finalFifth,finalSixth);
-        table2.push(resultTable4)
-        newData.push(secondSecond,secondThird,secondFourth,secondFifth);
-        table3.push(newData)
-        secondValue.push(secondOr1,secondOr2,secondOr3,secondOr4);
-        table4.push(secondValue)
-        table5.push(secondFirst)
-        table6.push(table5)
-        
-      })
     }
     res.status(200).json({
-      date: resultDate1,
-      draw: resultDate2,
-      // multiple: multiple,
-      fiveD: table1,
-      fiveD2: table2,
-      sixD1: table6,
-      sixD: table3,
-      sixD2: table4
+      fiveD: table6,
+      fiveD2: table7,
+      sixD1: table8,
+      sixD: table9,
+      sixD2: table10
     });
   });
 
