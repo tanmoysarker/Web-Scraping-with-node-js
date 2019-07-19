@@ -14,6 +14,8 @@ router.get('/:id?', (req, res, next) => {
   let special = []
   let consolidation = []
   let second = []
+  let result6 = []
+  let result7 = []
   
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
@@ -53,6 +55,28 @@ router.get('/:id?', (req, res, next) => {
         let special11 = strarray.slice(sp11+6,sp11+10)
         let sp13 = strarray.search("a12#0#")
         let special13 = strarray.slice(sp13+6,sp13+10)
+        
+        let co = strarray.search("b0#0#")
+        let consol = strarray.slice(co+5,co+9)
+        let co1 = strarray.search("b1#0#")
+        let consol1 = strarray.slice(co1+5,co1+9)
+        let co2 = strarray.search("b2#0#")
+        let consol2 = strarray.slice(co2+5,co2+9)
+        let co3 = strarray.search("b3#0#")
+        let consol3 = strarray.slice(co3+5,co3+9)
+        let co4 = strarray.search("b4#0#")
+        let consol4 = strarray.slice(co4+5,co4+9)
+        let co5 = strarray.search("b5#0#")
+        let consol5 = strarray.slice(co5+5,co5+9)
+        let co6 = strarray.search("b6#0#")
+        let consol6 = strarray.slice(co6+5,co6+9)
+        let co7 = strarray.search("b7#0#")
+        let consol7 = strarray.slice(co7+5,co7+9)
+        let co8 = strarray.search("b8#0#")
+        let consol8 = strarray.slice(co8+5,co8+9)
+        let co9 = strarray.search("b9#0#")
+        let consol9 = strarray.slice(co9+5,co9+9)
+
 
         result4.push(special1,special2,special3,special4,special5,special6,special7,special8,special12,special9,special10,special11,special13)
         let newResult4 = result4.map(str => /[a-z]/i.test(str) ? '----' : str)
@@ -61,6 +85,13 @@ router.get('/:id?', (req, res, next) => {
         let especial1 = newResult4.slice(5,10)
         let especial2 = newResult4.slice(10,13)
         result5.push(especial,especial1,especial2)
+
+        result6.push(consol,consol1,consol2,consol3,consol4,consol5,consol6,consol7,consol8,consol9)
+        let newResult5 = result6.map(str => /[a-z]/i.test(str) ? '----' : str)
+        let esconsol = newResult5.slice(0,5)
+        let esconsol1 = newResult5.slice(5,10)
+        result7.push(esconsol,esconsol1)
+
         console.log(result5)
         result3.push(f,s,t)
         let initial = result3.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
@@ -120,7 +151,7 @@ router.get('/:id?', (req, res, next) => {
       First: firstPhase,
       First2: second,
       Special: result5,
-      Consolidation: consolidation
+      Consolidation: result7
     });
   });
 
