@@ -132,30 +132,17 @@ router.get('/:id?', (req, res, next) => {
 //   let thirdPhase1 = [].concat.apply([], result1).slice(10,15)
 //   let thirdPhase2 = [].concat.apply([], result1).slice(15,20)
 // =======
-  second.push(firstP, secondP, thirdP)
+  // second.push(firstP, secondP, thirdP)
     
-    let b = [].concat.apply([], result1)
-    let c = b.indexOf(first)
-    b.splice(c, 1)
-    let d = b.indexOf(second1)
-    b.splice(d, 1)
-    let e = b.indexOf(third)
-    b.splice(e, 1)
+  //   let b = [].concat.apply([], result1)
+  //   let c = b.indexOf(first)
+  //   b.splice(c, 1)
+  //   let d = b.indexOf(second1)
+  //   b.splice(d, 1)
+  //   let e = b.indexOf(third)
+  //   b.splice(e, 1)
 
-  let secondPhase1 = b.slice(0,5)
-  
-  let specialData1 = secondPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
-  let secondPhase2 = b.slice(5,10)
-  let specialData2 = secondPhase2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
-  let specialData3 = ['','','']
-  special.push(specialData1,specialData2,specialData3)
-  
-  let thirdPhase1 = b.slice(10,15)
-  let consolationData1 = thirdPhase1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
-  let thirdPhase2 = b.slice(15,20)
-  let consolationData2 = thirdPhase2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
-
-  consolidation.push(consolationData1,consolationData2)
+  // let secondPhase1 = b.slice(0,5)
 
     res.status(200).json({
       All: result1,
