@@ -123,7 +123,7 @@ router.get('/:id?', (req, res, next) => {
   let thirdName = /^(?=.* )(?=.*\d)[\d\s]+$/.test(third) ? '----' : third
   let thirdP = ['3rd Prize',thirdName]
 // <<<<<<< HEAD
-//   second.push(firstP,secondP,thirdP)
+  second.push(firstP,secondP,thirdP)
   
 //   let secondPhase1 = [].concat.apply([], result1).slice(0,5)
 //   let secondPhase2 = [].concat.apply([], result1).slice(5,10)
