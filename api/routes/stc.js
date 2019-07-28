@@ -27,6 +27,7 @@ router.get('/', (req, res, next) => {
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         multiple.push(initial)
         let page = initial
+        console.log(initial)
         page = page.map((r, index) => {
           if (index === 0) {
             return ['1ST Prize', r]
