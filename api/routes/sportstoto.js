@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
   let resultTable3 = []
   let newData = []
   let second = []
-  request('https://www.check4d.com', (error, response, html) => {
+  request('https://www.check4d.com/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('#sportstoto').each((i, el) => {
@@ -26,7 +26,6 @@ router.get('/', (req, res, next) => {
         resultTop = resultTop.match(/.{1,4}/g)
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         multiple.push(initial)
-        console.log(initial)
         let page = initial
         page = page.map((r, index) => {
           if (index === 0) {
@@ -43,7 +42,6 @@ router.get('/', (req, res, next) => {
         newData.push(resultTable)
 
         let resultBottomFirst= $(el).find('.resultbottom').text()
-        console.log(resultBottomFirst)
         let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
         let specialData1 = resultBottom1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)

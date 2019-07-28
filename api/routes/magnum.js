@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
   let resultTable3 = []
   let newData = []
   let second = []
-  //https://www.check4d.com/
   request('https://www.check4d.com/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -24,11 +23,11 @@ router.get('/', (req, res, next) => {
         resultDate1.push(resultDate)
         
 
-        let resultTop = $(el).find('.resulttop').text().replace(/\s/g, '    '); 
+        let resultTop = $(el).find('.resulttop').text()
         resultTop = resultTop.match(/.{1,4}/g)
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
+        console.log(initial)
         multiple.push(initial)
-        // console.log(initial)
         let page = initial
         page = page.map((r, index) => {
           if (index === 0) {
@@ -44,10 +43,8 @@ router.get('/', (req, res, next) => {
         resultTable = initial
         newData.push(resultTable)
 
-        let resultBottomFirst= $(el).find('.resultbottom').text().replace(/\s/g, '    '); 
-        // console.log(resultBottomFirst)
+        let resultBottomFirst= $(el).find('.resultbottom').text()
         let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
-        console.log(resultBottom1);
         let specialData1 = resultBottom1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)
         let specialData2 = resultBottom2.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
@@ -55,8 +52,7 @@ router.get('/', (req, res, next) => {
         let specialData3 = resultBottom3.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         resultTable2.push(specialData1,specialData2,specialData3) 
        
-        let resultBottomSecond = $(el).find('.resultbottom').text().replace(/\s/g, '    ')
-        // console.log(resultBottomSecond)
+        let resultBottomSecond = $(el).find('.resultbottom').text()
         let resultBottom4 = resultBottomSecond.match(/.{1,4}/g).slice(13,18)
         let consolationData1 = resultBottom4.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom5 = resultBottomSecond.match(/.{1,4}/g).slice(18,23)
