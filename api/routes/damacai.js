@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
   let newData = []
   let second = []
   request('https://www.check4d.com/', (error, response, html) => {
+  // request('http://localhost:3000/demo/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('#damacai').each((i, el) => {

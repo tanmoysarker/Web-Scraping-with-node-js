@@ -26,8 +26,19 @@ router.get('/', (req, res, next) => {
         resultTop = resultTop.match(/.{1,4}/g)
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         let dp = initial.splice(0,3)
-        multiple.push(initial)
-        let page = dp
+        let resultTop3d = $(el).find('.resultTable:nth-child(2) .resulttop').text().replace(/\s/g, '   ');
+        let arr = []
+        for(var i = 0; i < resultTop3d.length; i += 3) {
+          arr.push(resultTop3d.substr(i, 3));
+        }
+        // while(resultTop3d) {
+        //   arr.push(resultTop3d.substr(0,3));
+        //   resultTop3d.substr(3)
+        // }
+        console.log(arr)
+        multiple.push(arr)
+        // console.log(multiple)
+        let page = arr
         page = page.map((r, index) => {
           if (index === 0) {
             return ['1ST Prize', r]
@@ -39,7 +50,7 @@ router.get('/', (req, res, next) => {
           console.log(index+':', r)
         })
         second = page
-        resultTable = dp
+        resultTable = arr
         newData.push(resultTable)
 
         let resultBottomFirst= $(el).find('.resultbottom').text()
