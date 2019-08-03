@@ -13,29 +13,35 @@ router.get('/', (req, res, next) => {
   let newData = []
   let second = []
   request('https://www.check4d.com/sabah-sarawak-4d-results/', (error, response, html) => {
+  // request('http://localhost:3000/demo/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('#sabah88').each((i, el) => {
-        let resultDate = $(el).find('.resultdrawdate').text()
+        let resultDate = $(el).find('.resultdrawdate').text().replace(/\s/g, '    ');
         let resultDraw = resultDate.substr(resultDate.indexOf(")") + 1)
         resultDate2.push(resultDraw)
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
 
-        let resultTop = $(el).find('.resulttop').text()
+        let resultTop = $(el).find('.resulttop').text().replace(/\s/g, '    ');
         resultTop = resultTop.match(/.{1,4}/g)
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         let dp = initial.splice(0,3)
-        let resultTop3d = $(el).find('.resultTable:nth-child(2) .resulttop').text().replace(/\s/g, '   ');
+        let resultTop3d = $(el).find('.resultTable:nth-child(1) .resulttop').text().replace(/\s/g, '   ');
+        let resultTop3d_arr = $(el).find('.resultTable:nth-child(1) .resulttop')
+        // console.log($(resultTop3d_arr[0]).text());
         let arr = []
-        for(var i = 0; i < resultTop3d.length; i += 3) {
-          arr.push(resultTop3d.substr(i, 3));
-        }
+        arr[0] = $(resultTop3d_arr[0]).text();
+        arr[1] = $(resultTop3d_arr[1]).text();
+        arr[2] = $(resultTop3d_arr[2]).text();
+        // for(var i = 0; i < resultTop3d.length; i += 4) {
+        //   arr.push(resultTop3d.substr(i, 4));
+        // }
         // while(resultTop3d) {
         //   arr.push(resultTop3d.substr(0,3));
         //   resultTop3d.substr(3)
         // }
-        console.log(arr)
+        // console.log(arr)
         multiple.push(arr)
         // console.log(multiple)
         let page = arr

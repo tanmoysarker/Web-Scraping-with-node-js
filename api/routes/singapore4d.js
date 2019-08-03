@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
 
-        let resultTop = $(el).find('.resulttop').text()
+        let resultTop = $(el).find('.resulttop').text().replace(/\s/g, '    ');
         resultTop = resultTop.match(/.{1,4}/g)
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         multiple.push(initial)

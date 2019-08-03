@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
   let newData = []
   let second = []
   request('https://www.check4d.com/sabah-sarawak-4d-results/', (error, response, html) => {
+  // request('http://localhost:3000/demo/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('#stc4d').each((i, el) => {
@@ -22,7 +23,7 @@ router.get('/', (req, res, next) => {
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
 
-        let resultTop = $(el).find('.resulttop').text()
+        let resultTop = $(el).find('.resulttop').text().replace(/\s/g, '    ');
         resultTop = resultTop.match(/.{1,4}/g)
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         multiple.push(initial)

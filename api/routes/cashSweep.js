@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
   let newData = []
   let second = []
   request('https://www.check4d.com/sabah-sarawak-4d-results/', (error, response, html) => {
+  // request('http://localhost:3000/demo/', (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $('#stec').each((i, el) => {
@@ -22,8 +23,9 @@ router.get('/', (req, res, next) => {
         resultDate = resultDate.slice(6,16)
         resultDate1.push(resultDate)
 
-        let resultTop = $(el).find('.resulttop').text()
+        let resultTop = $(el).find('.resulttop').text().replace(/\s/g, '    ');
         resultTop = resultTop.match(/.{1,4}/g)
+        console.log(resultTop);
         let initial = resultTop.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s)
         multiple.push(initial)
         let page = initial
@@ -41,7 +43,7 @@ router.get('/', (req, res, next) => {
         resultTable = initial
         newData.push(resultTable)
 
-        let resultBottomFirst= $(el).find('.resultbottom').text()
+        let resultBottomFirst= $(el).find('.resultbottom').text().replace(/\s/g, '    ');
         let resultBottom1 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(0,5)
         let specialData1 = resultBottom1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom2 = resultBottomFirst.match(/\d{4}|[^\d]/g).slice(5,10)
@@ -49,7 +51,7 @@ router.get('/', (req, res, next) => {
 
         resultTable2.push(specialData1,specialData2) 
        
-        let resultBottomSecond = $(el).find('.resultbottom').text()
+        let resultBottomSecond = $(el).find('.resultbottom').text().replace(/\s/g, '    ');
         let resultBottom4 = resultBottomSecond.match(/\d{4}|[^\d]/g).slice(11,16)
         let consolationData1 = resultBottom4.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom5 = resultBottomSecond.match(/\d{4}|[^\d]/g).slice(16,21)
