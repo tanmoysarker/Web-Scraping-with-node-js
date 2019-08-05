@@ -42,7 +42,7 @@ router.get('/', (req, res, next) => {
         resultTable = initial
         newData.push(resultTable)
 
-        let resultBottomFirst= $(el).find('.resultbottom').text().replace(/\s/g, '    '); 
+        let resultBottomFirst= $(el).find('.resultbottom').text()
         let resultBottom1 = resultBottomFirst.match(/.{1,4}/g).slice(0,5)
         let specialData1 = resultBottom1.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom2 = resultBottomFirst.match(/.{1,4}/g).slice(5,10)
@@ -52,7 +52,7 @@ router.get('/', (req, res, next) => {
 
         resultTable2.push(specialData1,specialData2,specialData3) 
        
-        let resultBottomSecond = $(el).find('.resultbottom').text().replace(/\s/g, '    ')
+        let resultBottomSecond = $(el).find('.resultbottom').text()
         let resultBottom4 = resultBottomSecond.match(/.{1,4}/g).slice(13,18)
         let consolationData1 = resultBottom4.map(s => /^(?=.* )(?=.*\d)[\d\s]+$/.test(s) ? '----' : s);
         let resultBottom5 = resultBottomSecond.match(/.{1,4}/g).slice(18,23)
